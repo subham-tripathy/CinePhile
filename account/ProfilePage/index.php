@@ -16,56 +16,9 @@ if (isset($_COOKIE["userID"])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile Page</title>
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="../../index.css">
-    <style>
-        body{
-            font-family: sans-serif;
-            color: black;
-        }
-
-        nav{
-            text-align: center;
-        }
-
-        #profileinfo{
-            margin-top: 50px;
-            display: flex;
-            padding: 0 15%;
-            min-height: 200px;
-            align-items: center;
-            border-radius: 15px;
-            border: 3px solid white;
-            box-shadow: 0 0 10px black;
-        }
-
-        #profile-pic{
-            height: 100px;
-            margin-right: 50px;
-        }
-        
-        #my-favourites{
-            min-height: 200px;
-            text-align: center;
-            margin-top: 50px;
-            padding: 1% 0.5%;
-            background-color: cyan;
-            border-radius: 15px;
-            border: 3px solid white;
-            box-shadow: 0 0 10px black;
-        }
-
-        #my-reviews{
-            margin-top: 50px;
-            padding: 1% 0.5%;
-            text-align: center;
-            background-color: orange;
-            min-height: 200px;
-            border-radius: 15px;
-            border: 3px solid white;
-            box-shadow: 0 0 10px black;
-        }
-    </style>
 </head>
 <body>
 
@@ -122,14 +75,9 @@ if (isset($_COOKIE["userID"])){
 <?php
 include_once('../../dbcon.php');
 
-
 $qry = 'select * from user where userId = "'.$_COOKIE['userID'].'"';
 $result = mysqli_query($conn, $qry);
 $result = $result -> fetch_assoc();
-
-
-
-
 
 ?>
 
@@ -142,31 +90,32 @@ $result = $result -> fetch_assoc();
 
 
 
-    <section id="profileinfo" style="background-color: red;">
+    <section id="profileinfo">
         <img src="profile-icon-png-910.png" alt="profile-pic" id="profile-pic">
-        <span>
-            <h1 style="padding-bottom: 0; margin-bottom: 0; "><?php echo ($result['Name']);?></h1>
-            <p style="padding-top: 0; margin-top: 0;  text-align: center;"><?php echo ($result['userID']);?></p>
-        </span>
+        <div>
+            <h1><?php echo ($result['Name']);?></h1>
+            <p><?php echo ($result['userID']);?></p>
+        </div>
     </section>
     
-    <!-- <section id="my-favourites">
-        <h1 style="color: black;">THIS SECTION CONSISTS OF ALL THE MOVIES/WEB SERIES MARKED AS FAVOURITE BY THE USER</h1>
-    </section>
     
-    <section id="my-reviews">
-        <h1>THIS SECTION CONSISTS OF ALL THE REVIEWS MADE BY THE USER</h1>
-    </section> -->
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
         const menu = document.getElementsByClassName("menu")[0];
     const sideNav = document.getElementsByClassName("side-nav")[0];
 

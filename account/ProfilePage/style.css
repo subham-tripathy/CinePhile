@@ -1,0 +1,30 @@
+#profileinfo{
+    background-color: aqua;
+    width: 70%;
+    padding: 3% 5%;
+    border-radius: 25px;
+    margin: auto;
+    margin-top: 50px;
+    display: flex;
+    border: 5px solid black;
+    box-shadow: 0 0 20px whitesmoke;
+}
+
+#profileinfo img{
+    margin-right: 100px;
+}
+
+#profileinfo div{
+    margin-top: 25px;
+}
+
+#profileinfo h1{
+    font-size: 35px;
+    color: black;
+}
+
+#profileinfo p{
+    color: black;
+    font-size: 25px;
+    font-family: monospace;
+}
