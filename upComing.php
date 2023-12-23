@@ -6,9 +6,12 @@
     <title>Upcoming Movies</title>
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <link rel="stylesheet" href="index.css">
 
 <style>
+h2.title{
+    margin-top: 40px;
+    margin-left: 40px;
+}
 
 .popularPage-list-item{
     display: flex;
@@ -83,7 +86,7 @@
 <div class="body">
 
     <header>
-        <nav>
+    <nav>
             <span style="display: flex; align-items:center;"><span class="material-symbols-outlined menu">menu</span>
             <a href="./" style="text-decoration: none;"><h1 class="logo">CinePhile</h1></a></span>
             <div class="search">
@@ -91,20 +94,26 @@
                 <span class="material-symbols-outlined search-icon">search</span>
             </div>
             <ul>
-                <li><p id="homeNav" class="nav-links active">Home</p></li>
-                <li><p id="popularNav" class="nav-links">Popular</p></li>
-                <li><p id="aboutNav" class="nav-links">About</p></li>
+                <li><a href="./" style="text-decoration: none;" id="homeNav" class="nav-links active">Home</a></li>
+                <li><a href="./popularMovie.php" style="text-decoration: none;" id="popularNav" class="nav-links">Popular</a></li>
+                <li><a href="./account/login" style="text-decoration: none;" id="login" class="nav-links">Log In</a></li>
+                <!-- <li><p id="aboutNav" class="nav-links">About</p></li> -->
             </ul>
         </nav>
     </header>
 
-
+    <section class="mainSection">
     <div class="popularPage">
         <div>
             <h2 class="title">Upcoming Movies</h2>
             <div class="popularPage-list-item"></div>
         </div>
     </div>
+
+
+
+
+    </section>
 </div>
 
 
@@ -119,6 +128,9 @@
 
 
 <div class="search-results">
+<button class="close-results">
+<span class="material-symbols-outlined">close</span>
+</button>
     <div class="switchButtons">
         <button class="movieButton">MOVIES</button>
         <button class="tvButton">TV SHOWS</button>
@@ -170,16 +182,15 @@ const searchInput = document.getElementById("search-input");
 const searchType = document.getElementById("movie-type");
 const searchIcon = document.getElementsByClassName("search-icon")[0];
 const mainSection = document.getElementsByClassName("mainSection")[0];
+const closeSearchResult = document.getElementsByClassName("close-results")[0];
+
+
 
 searchInput.addEventListener("focusin", ()=>{
     searchResult.style.display = "block";
     mainSection.style.filter = "blur(10px)";
 });
 
-searchInput.addEventListener("focusout", ()=>{
-    searchResult.style.display = "none";
-    mainSection.style.filter = "none";
-});
 
 
 
@@ -440,42 +451,42 @@ searchIcon.addEventListener("click", ()=>{
 
 fetchPopularPageResults();
 
-    function fetchPopularPageResults2() {
-        // fetch('https://api.themoviedb.org/3/movie/upcoming?api_key=96722bcb778d0302594f6c5268f3a8fc&page=2')
-        fetch('https://api.themoviedb.org/3/discover/movie?api_key=96722bcb778d0302594f6c5268f3a8fc&primary_release_date.gte=2023-12&primary_release_date.lte=2024-01&sort_by=popularity.desc&with_original_language=hi&page=2')
-
-        .then(res => res.json())
-        .then(data => {
-            for(let i = 0; i>=0; i++)
-            {
-                popular = data.results[i];
-                // console.log(popular);
-                a = document.createElement("a");
-                a.href = "moviepage.php?id="+popular.id;
-                a.classList.add("Popular-card");
-                img = document.createElement("img");
-                img.classList.add("Popular-img");
-                img.src = "https://image.tmdb.org/t/p/w185"+popular.poster_path;
-                // console.log(img.src);
-                if (img.src == 'https://image.tmdb.org/t/p/w185null')
-                    img.src = "https://media.istockphoto.com/vectors/no-image-available-icon-vector-id1216251206?k=6&m=1216251206&s=612x612&w=0&    h=G8kmMKxZlh7WyeYtlIHJDxP5XRGm9ZXyLprtVJKxd-o=";
-
-                h3 = document.createElement("h3");
-                h3.classList.add("Popular-title")
-                h3.innerHTML = popular.title;
-                p = document.createElement("p");
-                p.classList.add("Popular-imdb");
-                p.innerHTML = popular.release_date;
 
 
-                a.appendChild(img);
-                a.appendChild(h3);
-                a.appendChild(p);
-                PopularResult.appendChild(a);
-            }
-        })
+
+
+
+
+
+
+
+
+
+
+
+
+// RESPONSIVE
+
+
+if(window.screen.width<640){
+    searchIcon.addEventListener('click', ()=>{
+        searchInput.style.display = "block";
+        searchInput.focus();
+        document.querySelector('div.search').style.position = "absolute";
+        document.querySelector('div.search').style.width = "80%";
+    });
+
+    closeSearchResult.addEventListener("click", ()=>{
+        searchResult.style.display = "none";
+        mainSection.style.filter = "none";
+        searchInput.style.display = "none";
+        document.querySelector('div.search').style.width = "max-content";
+        document.querySelector('div.search').style.position = "";
+        document.querySelector('div.search').style.right = "";
+    });
 }
-// fetchPopularPageResults2();
+
+
 
     </script>
 </body>
