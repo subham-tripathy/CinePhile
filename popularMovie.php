@@ -10,6 +10,11 @@
 
 <style>
 
+    h2.title{
+        margin-top: 40px;
+        margin-left: 40px;
+    }
+
 .popularPage-list-item{
     display: flex;
     flex-flow: row wrap;
@@ -98,7 +103,7 @@
             </ul>
         </nav>
     </header>
-
+    <section class="mainSection">
 
     <div class="popularPage">
         <div>
@@ -106,6 +111,7 @@
             <div class="popularPage-list-item"></div>
         </div>
     </div>
+    </section>
 </div>
 
 
@@ -120,6 +126,9 @@
 
 
 <div class="search-results">
+<button class="close-results">
+<span class="material-symbols-outlined">close</span>
+</button>
     <div class="switchButtons">
         <button class="movieButton">MOVIES</button>
         <button class="tvButton">TV SHOWS</button>
@@ -131,10 +140,10 @@
 
 
 
-    <!-- <script src="index.js"></script> -->
 
 
     <script>
+
 
 
 const menu = document.getElementsByClassName("menu")[0];
@@ -172,16 +181,15 @@ const searchInput = document.getElementById("search-input");
 const searchType = document.getElementById("movie-type");
 const searchIcon = document.getElementsByClassName("search-icon")[0];
 const mainSection = document.getElementsByClassName("mainSection")[0];
+const closeSearchResult = document.getElementsByClassName("close-results")[0];
+
+
 
 searchInput.addEventListener("focusin", ()=>{
     searchResult.style.display = "block";
     mainSection.style.filter = "blur(10px)";
 });
 
-searchInput.addEventListener("focusout", ()=>{
-    searchResult.style.display = "none";
-    mainSection.style.filter = "none";
-});
 
 
 
@@ -362,10 +370,7 @@ searchInput.addEventListener('keypress', ()=>{
     fetchMovieResults();
     fetchTVResults();
 });
-searchIcon.addEventListener("click", ()=>{
-    fetchMovieResults();
-    fetchTVResults();
-});
+
 
 
 
@@ -475,6 +480,45 @@ fetchPopularPageResults();
         })
 }
 fetchPopularPageResults2();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// RESPONSIVE
+
+
+if(window.screen.width<640){
+    searchIcon.addEventListener('click', ()=>{
+        searchInput.style.display = "block";
+        searchInput.focus();
+        document.querySelector('div.search').style.position = "absolute";
+        document.querySelector('div.search').style.width = "80%";
+    });
+
+    closeSearchResult.addEventListener("click", ()=>{
+        searchResult.style.display = "none";
+        mainSection.style.filter = "none";
+        searchInput.style.display = "none";
+        document.querySelector('div.search').style.width = "max-content";
+        document.querySelector('div.search').style.position = "";
+        document.querySelector('div.search').style.right = "";
+    });
+}
+
+
+
+
+
 
     </script>
 </body>
