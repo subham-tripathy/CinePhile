@@ -1,15 +1,3 @@
-<?php
-
-if (isset($_COOKIE["userID"])){
-
-
-?>
-
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -104,15 +92,3 @@ if (isset($_COOKIE["userID"])){
     </script>
 </body>
 </html>
-
-
-<?php
-
-}
-else{
-    echo '<script>
-        alert("login first");
-        window.location.replace("../login");
-    </script>';
-}
-?>

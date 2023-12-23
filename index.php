@@ -84,12 +84,16 @@
         </div>
 
     </section>
+    
 </div>
 
 
 
 
 <div class="search-results">
+<button class="close-results">
+<span class="material-symbols-outlined">close</span>
+</button>
     <div class="switchButtons">
         <button class="movieButton">MOVIES</button>
         <button class="tvButton">TV SHOWS</button>

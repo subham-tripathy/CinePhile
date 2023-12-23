@@ -1,4 +1,5 @@
 const searchResult = document.getElementsByClassName("search-results")[0];
+const closeSearchResult = document.getElementsByClassName("close-results")[0];
 const searchInput = document.getElementById("search-input");
 const searchType = document.getElementById("movie-type");
 const searchIcon = document.getElementsByClassName("search-icon")[0];
@@ -9,10 +10,11 @@ searchInput.addEventListener("focusin", ()=>{
     mainSection.style.filter = "blur(10px)";
 });
 
-// searchInput.addEventListener("focusout", ()=>{
-//     searchResult.style.display = "none";
-//     mainSection.style.filter = "none";
-// });
+
+closeSearchResult.addEventListener("click", ()=>{
+    searchResult.style.display = "none";
+    mainSection.style.filter = "none";
+});
 
 
 
@@ -193,10 +195,6 @@ searchInput.addEventListener('keypress', ()=>{
     fetchMovieResults();
     fetchTVResults();
 });
-searchIcon.addEventListener("click", ()=>{
-    fetchMovieResults();
-    fetchTVResults();
-});
 
 
 
@@ -210,7 +208,7 @@ function fetchTrendingResults() {
         for(let i = 0; i<10; i++)
         {
             trending = data.results[i];
-            console.log(trending);
+            // console.log(trending);
             a = document.createElement("a");
             a.href = "moviepage.php?id="+trending.id;
             img = document.createElement("img");
@@ -311,7 +309,7 @@ function fetchPopularResults() {
         for(let i = 0; i<10; i++)
         {
             popular = data.results[i];
-            console.log(popular);
+            // console.log(popular);
             a = document.createElement("a");
             a.href = "moviepage.php?id="+popular.id;
             a.classList.add("popular-card");
@@ -420,7 +418,7 @@ function fetchHindiPopularResults() {
             img = document.createElement("img");
             img.classList.add("hindiPopular-img");
             img.src = "https://image.tmdb.org/t/p/w185"+popular.poster_path;
-            console.log(img.src);
+            // console.log(img.src);
             if (img.src == 'https://image.tmdb.org/t/p/w185null')
                 img.src = "https://media.istockphoto.com/vectors/no-image-available-icon-vector-id1216251206?k=6&m=1216251206&s=612x612&w=0&h=G8kmMKxZlh7WyeYtlIHJDxP5XRGm9ZXyLprtVJKxd-o=";
             
@@ -583,4 +581,118 @@ tvButton.onclick = ()=>{
     movieButton.style.backgroundColor = "rgb(0, 128, 128, 0.4)";
     tvResult.style.display = "block";
     tvButton.style.backgroundColor = "rgb(0, 128, 128, 1)";
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// RESPONSIVE
+
+
+if(window.screen.width<640){
+
+    searchIcon.addEventListener('click', ()=>{
+        searchInput.style.display = "block";
+        searchInput.focus();
+        document.querySelector('div.search').style.position = "absolute";
+        document.querySelector('div.search').style.width = "80%";
+    });
+
+    closeSearchResult.addEventListener("click", ()=>{
+        searchResult.style.display = "none";
+        mainSection.style.filter = "none";
+        searchInput.style.display = "none";
+        document.querySelector('div.search').style.width = "max-content";
+        document.querySelector('div.search').style.position = "";
+        document.querySelector('div.search').style.right = "";
+    });
+
+
+
 }
