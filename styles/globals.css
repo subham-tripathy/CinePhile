@@ -3,4 +3,11 @@
 @tailwind utilities;
 
 
-*{transition: .3s;}
+* {
+    transition: .3s;
+}
+
+nav {
+    background: #3a00ff;
+    background: linear-gradient(180deg, rgba(58, 0, 255, 1) 0%, rgba(200, 0, 255, 1) 100%);
+}
