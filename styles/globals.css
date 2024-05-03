@@ -3,11 +3,25 @@
 @tailwind utilities;
 
 
+@font-face {
+    font-family: UbuntuSans-Bold;
+    src: url('/fonts/UbuntuSans-Bold.ttf');
+}
+
+@font-face {
+    font-family: UbuntuSans-ExtraBold;
+    src: url('/fonts/UbuntuSans-ExtraBold.ttf');
+}
+
+
 * {
     transition: .3s;
 }
 
+body {
+    font-family: UbuntuSans-Bold;
+}
+
 nav {
-    background: #3a00ff;
-    background: linear-gradient(180deg, rgba(58, 0, 255, 1) 0%, rgba(200, 0, 255, 1) 100%);
+    font-family: UbuntuSans-ExtraBold;
 }
