@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import NavBar from './Components/NavBar'
+import Caraousel from './Components/Caraousel'
 
 const index = () => {
 
@@ -22,7 +23,8 @@ const index = () => {
 
   return (
     <>
-      <NavBar active={'home'}/>
+      <NavBar active={'home'} />
+      <Caraousel />
     </>
   )
 }
