@@ -10,13 +10,18 @@ const search = () => {
             const movies = data.results
             movies.forEach(element => {
                 const a = document.createElement('a')
-                a.href = "/movie/" + element.id
+                a.href = "/movie?id=" + element.id
                 a.classList.add('flex')
                 a.classList.add('bg-[gold]')
-
+                a.classList.add('w-[95%]')
+                a.classList.add('mx-auto')
+                a.classList.add('p-2')
+                a.classList.add('rounded')
+                
                 const img = document.createElement('img')
                 img.src = "https://image.tmdb.org/t/p/w92" + element.poster_path
                 img.alt = element.title
+                img.classList.add('mr-5')
 
                 const name = document.createElement('p')
                 name.textContent = element.title
